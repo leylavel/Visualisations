@@ -12,8 +12,14 @@ In the annual strategic meeting one of the top items was to onboard data analyti
 
 | Tables  | Description |
 | ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+| fact_sales_monthly  | transactional sales data  |
+| fact_forecast_monthly  | forecast quantity of products |
+| fact_actuals_estimates | both fact_sales_monthly and fact_forecast_monthly |
+| post_invoice_deductions | data of amount that needs to be deducted after net invoice sales |
+| manufacturing costs | data of manufacturing amount that needs to be deducted after net sales |
+| freight cost | data about transportation cost that needs to be deducted after net sales |
+| operational expenses | data about operational cost that needs to be deducted after net sales |
+
 
 ## Dashboards
 <img width="500" alt="image" src="https://github.com/leylavel/Visualisations/assets/61410191/a06f45d2-ef6b-4718-a3ba-9950f10e67a0">
