@@ -10,7 +10,14 @@ In the annual strategic meeting one of the top items was to onboard data analyti
 
 <img width="900" alt="image_2023-11-28_12-55-38" src="https://github.com/leylavel/Visualisations/assets/61410191/7a08741a-5973-4fa5-bee8-3942e70f55f7">
 
+| Tables  | Description |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
+
 ## Dashboards
+<img width="500" alt="image" src="https://github.com/leylavel/Visualisations/assets/61410191/a06f45d2-ef6b-4718-a3ba-9950f10e67a0">
+
 ### Finance view  
 Get P & L statement for any customer / product / country or aggregation of the above over any time period
 ![Business360_2_page-0001](https://github.com/leylavel/Visualisations/assets/61410191/3ff1a26d-a2ac-417a-af50-594540b96ab3)
