@@ -15,10 +15,10 @@ In the annual strategic meeting one of the top items was to onboard data analyti
 | fact_sales_monthly  | transactional sales data  |
 | fact_forecast_monthly  | forecast quantity of products |
 | fact_actuals_estimates | both fact_sales_monthly and fact_forecast_monthly |
-| post_invoice_deductions | data of amount that needs to be deducted after net invoice sales |
-| manufacturing costs | data of manufacturing amount that needs to be deducted after net sales |
-| freight cost | data about transportation cost that needs to be deducted after net sales |
-| operational expenses | data about operational cost that needs to be deducted after net sales |
+| post_invoice_deductions | amount that needs to be deducted after net invoice sales |
+| manufacturing costs | manufacturing amount that needs to be deducted after net sales |
+| freight cost | transportation cost that needs to be deducted after net sales |
+| operational expenses | operational cost that needs to be deducted after net sales |
 
 
 ## Dashboards
