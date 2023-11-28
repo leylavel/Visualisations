@@ -8,3 +8,18 @@ In the annual strategic meeting one of the top items was to onboard data analyti
 
 ## Data Modeling
 
+<img width="900" alt="image_2023-11-28_12-55-38" src="https://github.com/leylavel/Visualisations/assets/61410191/7a08741a-5973-4fa5-bee8-3942e70f55f7">
+
+## Dashboards
+### Finance view  
+Get P & L statement for any customer / product / country or aggregation of the above over any time period
+![Business360_2_page-0001](https://github.com/leylavel/Visualisations/assets/61410191/3ff1a26d-a2ac-417a-af50-594540b96ab3)
+
+### Sales view  
+Analyze the performance of your customer(s) over key metrics like Net Sales, Gross Margin and view the same in profitability / Growth matrix.
+![Business360_2_page-0002](https://github.com/leylavel/Visualisations/assets/61410191/01aeda3a-d2aa-4776-85b2-8dbdf5f93f4b)
+
+### Marketing view  
+Analyze the performance of your product(s) over key metrics like Net Sales, Gross Margin and view the same in profitability / Growth matrix.  
+![Business360_2_page-0003](https://github.com/leylavel/Visualisations/assets/61410191/11175c52-3730-40be-94c0-90db6fe27480)
+
