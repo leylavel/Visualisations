@@ -112,3 +112,13 @@ Total COGS $ = 'Key Measures'[Manufacturing Cost $] + 'Key Measures'[Freight Cos
 ```
 P & L LY = CALCULATE([P & L Values], SAMEPERIODLASTYEAR(dim_date[date]))
 ```
+#### P & L Columns
+```
+P & L Columns = 
+var x = ALLNOBLANKROW(fiscal_year[fy_desc])
+
+return UNION(
+    ROW("Col Header", "LY"),
+    ROW("Col Header", "YoY Cng"),
+    ROW("Col Header", "YoY Cng%"), x)
+```
