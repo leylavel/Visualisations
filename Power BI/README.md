@@ -20,6 +20,29 @@ In the annual strategic meeting one of the top items was to onboard data analyti
 | freight cost | transportation cost that needs to be deducted after net sales |
 | operational expenses | operational cost that needs to be deducted after net sales |
 
+**fact_actuals_estimates** columns  
+* ads_promotion
+```
+ads_promotions = 
+var res = CALCULATE(MAX('Operational Expence'[ads_promotions_pct]), RELATEDTABLE('Operational Expence'))
+return res*fact_actual_estimates[net_sales_amount]
+```
+
+* freight_cost
+```
+freight_cost = 
+var res = CALCULATE(MAX(freight_cost[freight_pct]), 
+RELATEDTABLE(freight_cost))
+return res*fact_actual_estimates[net_sales_amount]
+```
+
+* manufacturing_cost
+```
+manufacturing_cost = 
+var res = CALCULATE(MAX(manufacturing_cost[manufacturing_cost]), 
+RELATEDTABLE(manufacturing_cost))
+return res*fact_actual_estimates[Qty]
+```
 
 ## Dashboards
 <img width="500" alt="image" src="https://github.com/leylavel/Visualisations/assets/61410191/a06f45d2-ef6b-4718-a3ba-9950f10e67a0">
@@ -36,3 +59,56 @@ Analyze the performance of your customer(s) over key metrics like Net Sales, Gro
 Analyze the performance of your product(s) over key metrics like Net Sales, Gross Margin and view the same in profitability / Growth matrix.  
 ![Business360_2_page-0003](https://github.com/leylavel/Visualisations/assets/61410191/11175c52-3730-40be-94c0-90db6fe27480)
 
+### DAX
+#### P & L Final Value
+```
+P & L Final Value = SWITCH(TRUE(),
+SELECTEDVALUE(fiscal_year[fy_desc]) = MAX('P & L Columns'[Col Header]), [P & L Values],
+MAX('P & L Columns'[Col Header]) = "LY", [P & L LY],
+MAX('P & L Columns'[Col Header]) = "YoY Cng", [P & L YoY Chg],
+MAX('P & L Columns'[Col Header]) = "YoY Cng%", [P & L YoY Chg %]
+)
+```
+#### P & L Values
+```
+P & L Values = 
+var res = SWITCH(TRUE(),
+MAX('P & L Rows'[Order]) = 1, [GS $]/1000000,
+MAX('P & L Rows'[Order]) = 2, [Pre Invoice Deduction $]/1000000,
+MAX('P & L Rows'[Order]) = 3, [NIS $]/1000000,
+MAX('P & L Rows'[Order]) = 4, [Post Invoice Deduction $]/1000000,
+MAX('P & L Rows'[Order]) = 5, [Post Invoice Other Deduction $]/1000000,
+MAX('P & L Rows'[Order]) = 6, [Post Invoice Deduction $]/1000000 + [Post Invoice Other Deduction $]/1000000,
+MAX('P & L Rows'[Order]) = 7, [NS $]/1000000,
+MAX('P & L Rows'[Order]) = 8, [Manufacturing Cost $]/1000000,
+MAX('P & L Rows'[Order]) = 9, [Freight Cost $]/1000000,
+MAX('P & L Rows'[Order]) = 10, [Other Cost $]/1000000,
+MAX('P & L Rows'[Order]) = 11, [Total COGS $]/1000000,
+MAX('P & L Rows'[Order]) = 12, [GM $]/1000000,
+MAX('P & L Rows'[Order]) = 13, [GM %],
+MAX('P & L Rows'[Order]) = 14, [GM / Unit],
+MAX('P & L Rows'[Order]) = 15, [Operational Expense $]/1000000,
+MAX('P & L Rows'[Order]) = 16, [Net Profit $]/1000000,
+MAX('P & L Rows'[Order]) = 17, [Net Profit %]*100
+)
+return IF(HASONEVALUE('P & L Rows'[Line Item]), res, [NS $]/1000000)
+```
+#### Sales Qty
+```
+Sales Qty = CALCULATE([Quantity], fact_actual_estimates[date] <= MAX(LastSalesMonth[LastSalesMonth]) )
+```
+
+#### Selected P & L Row
+```
+Selected P & L Row = IF(HASONEVALUE('P & L Rows'[Line Item]), SELECTEDVALUE('P & L Rows'[Line Item]), "Net Sales")
+```
+
+#### Total COGS $
+```
+Total COGS $ = 'Key Measures'[Manufacturing Cost $] + 'Key Measures'[Freight Cost $] + 'Key Measures'[Other Cost $]
+```
+
+#### P & L LY
+```
+P & L LY = CALCULATE([P & L Values], SAMEPERIODLASTYEAR(dim_date[date]))
+```
