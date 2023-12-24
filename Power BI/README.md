@@ -122,3 +122,15 @@ return UNION(
     ROW("Col Header", "YoY Cng"),
     ROW("Col Header", "YoY Cng%"), x)
 ```
+#### ABS Error 
+```
+ABS Error = 
+SUMX(                       // 5 Iterate this formula for all months and sum them up
+DISTINCT(dim_date[month]),  // 4 convert net error to Abs error by taking absolute value for each month
+
+SUMX(                                 // 3 Iterate for all products and sum them up
+DISTINCT(dim_product[product_code]), 
+ABS([Net Error]) // 1 convert net error to Abs error by taking absolute value
+)
+)
+```
