@@ -134,3 +134,11 @@ ABS([Net Error]) // 1 convert net error to Abs error by taking absolute value
 )
 )
 ```
+#### Forecast Accuracy %
+```
+Forecast Accuracy % = IF('Key Measures'[ABS Error %]<>BLANK(),1-'Key Measures'[ABS Error %],BLANK())
+```
+#### Warning
+```
+Warning = IF([NS BM $] = BLANK() || [GM % BM] = BLANK() || [NS BM $] = BLANK(), "BM Target is not avaluable for the selected filters", "")
+```
